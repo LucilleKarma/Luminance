@@ -1999,6 +1999,11 @@
             Represents a mapping from item ID to shader.
             </summary>
         </member>
+        <member name="F:Luminance.Core.Graphics.DyeShaderMappings.ShaderTextureCache">
+            <summary>
+            Represents the set of all textures to use for the purposes of rendering a given dye mapping.
+            </summary>
+        </member>
         <member name="F:Luminance.Core.Graphics.ManagedScreenFilter.DeferredTextures">
             <summary>
             All deferred textures that should be applied when the filter's shader is applied.

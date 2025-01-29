@@ -95,6 +95,13 @@ namespace Luminance.Core.Graphics
             {
                 DyeShaderMappings.ShaderToDyeID[Name] = dyeID;
                 GameShaders.Armor.BindShader(dyeID, armorShaderData);
+
+                DyeShaderMappings.ShaderTextureCache[Name] = [];
+                for (int i = 1; i < 16; i++)
+                {
+                    if (Main.instance.GraphicsDevice.Textures[i] is Texture2D texture)
+                        DyeShaderMappings.ShaderTextureCache[Name].Add(new ManagedScreenFilter.DeferredTexture(texture, i, SamplerState.LinearWrap));
+                }
             }
         }
 
