@@ -315,7 +315,22 @@ namespace Luminance.Core.Graphics
                         ShaderManager.SetFilter(shaderIdentifier, refEffect);
                 }
                 else
+                {
+                    Dictionary<string, object> parameterCache = [];
+                    if (ShaderManager.TryGetShader(shaderIdentifier, out ManagedShader oldShader))
+                        parameterCache = oldShader.parameterCache;
+
                     ShaderManager.SetShader(shaderIdentifier, refEffect);
+                    ManagedShader shader = ShaderManager.GetShader(shaderIdentifier);
+
+                    if (DyeShaderMappings.ShaderToDyeID.TryGetValue(shaderIdentifier, out int dyeID))
+                        shader.CreateDyeBindings(dyeID);
+
+                    // Preserve parameters.
+                    // This is important for things like dyes, where the parameters might only be saved once.
+                    foreach (var parameterKv in parameterCache)
+                        shader.TrySetParameter(parameterKv.Key, parameterKv.Value);
+                }
 
                 string shaderName = Path.GetFileName(shaderPath);
                 Main.NewText($"Shader with the file name '{shaderName}' has been successfully recompiled.");

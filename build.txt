@@ -1,6 +1,6 @@
 displayName = Luminance
 author = Dominic Karma, Imogen
-version = 1.0.7
+version = 1.0.8
 homepage = https://github.com/DominicKarma/Luminance
 buildIgnore = .vs\*, Properties\*, *.csproj, *.user, obj\*, bin\*, *.config, .git\*, .github\*, LICENSE, README.md, .editorconfig, .gitignore, .gitattributes, TODO.md
 hideCode = false

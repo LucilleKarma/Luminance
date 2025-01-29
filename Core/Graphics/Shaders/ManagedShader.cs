@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using Terraria;
+using Terraria.Graphics.Shaders;
 using Terraria.ID;
 
 namespace Luminance.Core.Graphics
@@ -13,7 +14,12 @@ namespace Luminance.Core.Graphics
         /// <summary>
         /// A managed copy of all parameter data. Used to minimize excess SetValue calls, in cases where the value aren't actually being changed.
         /// </summary>
-        private readonly Dictionary<string, object> parameterCache;
+        internal readonly Dictionary<string, object> parameterCache;
+
+        /// <summary>
+        /// The identifying name of this shader.
+        /// </summary>
+        public readonly string Name;
 
         /// <summary>
         /// The shader reference underlying this wrapper.
@@ -41,9 +47,10 @@ namespace Luminance.Core.Graphics
         /// </summary>
         public const string DefaultPassName = "AutoloadPass";
 
-        internal ManagedShader(Ref<Effect> shader)
+        internal ManagedShader(string name, Ref<Effect> shader)
         {
             Shader = shader;
+            Name = name;
 
             // Initialize the parameter cache.
             parameterCache = [];
@@ -67,6 +74,29 @@ namespace Luminance.Core.Graphics
         /// An example of this being useful could when be having this shader shared with a screen shader, which supplies its values directly and without the <see cref="TrySetParameter(string, object)"/> wrapper.
         /// </remarks>
         public void ResetCache() => parameterCache.Clear();
+
+        /// <summary>
+        /// Maps this shader to a given dye.
+        /// </summary>
+        /// <param name="dyeID">The dye item ID to map this shader to.</param>
+        public void CreateDyeBindings(int dyeID)
+        {
+            // TODO -- Update this in 1.4.5.
+            // Updating this is probably going to sting a bit, since creating an Asset wrapper around an Effect at recompilation time is more messy than simply constructing a Ref wrapper.
+            ArmorShaderData armorShaderData = new ArmorShaderData(Shader, DefaultPassName);
+
+            if (DyeShaderMappings.ShaderToDyeID.TryGetValue(Name, out int existingDyeID))
+            {
+                int dyeShaderIndex = GameShaders.Armor.GetShaderIdFromItemId(existingDyeID);
+                List<ArmorShaderData> shaderDataCache = (List<ArmorShaderData>)typeof(ArmorShaderDataSet).GetField("_shaderData", UniversalBindingFlags).GetValue(GameShaders.Armor);
+                shaderDataCache[dyeShaderIndex - 1] = armorShaderData;
+            }
+            else
+            {
+                DyeShaderMappings.ShaderToDyeID[Name] = dyeID;
+                GameShaders.Armor.BindShader(dyeID, armorShaderData);
+            }
+        }
 
         /// <summary>
         /// Attempts to send parameter data to the GPU for the shader to use.

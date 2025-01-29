@@ -1994,6 +1994,11 @@
             The vertex declaration. This declares the layout and size of the data in the vertex shader.
             </summary>
         </member>
+        <member name="F:Luminance.Core.Graphics.DyeShaderMappings.ShaderToDyeID">
+            <summary>
+            Represents a mapping from item ID to shader.
+            </summary>
+        </member>
         <member name="F:Luminance.Core.Graphics.ManagedScreenFilter.DeferredTextures">
             <summary>
             All deferred textures that should be applied when the filter's shader is applied.
@@ -2106,6 +2111,11 @@
             A managed copy of all parameter data. Used to minimize excess SetValue calls, in cases where the value aren't actually being changed.
             </summary>
         </member>
+        <member name="F:Luminance.Core.Graphics.ManagedShader.Name">
+            <summary>
+            The identifying name of this shader.
+            </summary>
+        </member>
         <member name="F:Luminance.Core.Graphics.ManagedShader.Shader">
             <summary>
             The shader reference underlying this wrapper.
@@ -2134,6 +2144,12 @@
             <remarks>
             An example of this being useful could when be having this shader shared with a screen shader, which supplies its values directly and without the <see cref="M:Luminance.Core.Graphics.ManagedShader.TrySetParameter(System.String,System.Object)"/> wrapper.
             </remarks>
+        </member>
+        <member name="M:Luminance.Core.Graphics.ManagedShader.CreateDyeBindings(System.Int32)">
+            <summary>
+            Maps this shader to a given dye.
+            </summary>
+            <param name="dyeID">The dye item ID to map this shader to.</param>
         </member>
         <member name="M:Luminance.Core.Graphics.ManagedShader.TrySetParameter(System.String,System.Object)">
             <summary>
@@ -2177,6 +2193,11 @@
         <member name="F:Luminance.Core.Graphics.ShaderManager.filters">
             <summary>
             The set of all filters handled by this manager class.
+            </summary>
+        </member>
+        <member name="F:Luminance.Core.Graphics.ShaderManager.PostShaderLoadActions">
+            <summary>
+            A queue of actions that should be performed after all shaders across all mods have been initialized.
             </summary>
         </member>
         <member name="P:Luminance.Core.Graphics.ShaderManager.HasFinishedLoading">

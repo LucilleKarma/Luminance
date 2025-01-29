@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Microsoft.Xna.Framework;
@@ -24,6 +25,11 @@ namespace Luminance.Core.Graphics
         /// The set of all filters handled by this manager class.
         /// </summary>
         internal static Dictionary<string, ManagedScreenFilter> filters;
+
+        /// <summary>
+        /// A queue of actions that should be performed after all shaders across all mods have been initialized.
+        /// </summary>
+        public static readonly Queue<Action> PostShaderLoadActions = [];
 
         /// <summary>
         /// Whether this manager class has finished loading all shaders yet or not.
@@ -241,7 +247,7 @@ namespace Luminance.Core.Graphics
         /// </summary>
         /// <param name="name">The name of the shader.</param>
         /// <param name="newShaderData">The shader data reference to save.</param>
-        public static void SetShader(string name, Ref<Effect> newShaderData) => shaders[name] = new(newShaderData);
+        public static void SetShader(string name, Ref<Effect> newShaderData) => shaders[name] = new(name, newShaderData);
 
         /// <summary>
         /// Sets a filter with a given name in the registry manually.

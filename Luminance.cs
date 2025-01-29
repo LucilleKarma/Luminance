@@ -2,6 +2,7 @@
 global using static Luminance.Assets.MiscTexturesRegistry;
 global using static Luminance.Common.Utilities.Utilities;
 global using static Microsoft.Xna.Framework.MathHelper;
+using System;
 using Luminance.Core.Graphics;
 using Luminance.Core.Hooking;
 using Luminance.Core.ModCalls;
@@ -36,6 +37,9 @@ namespace Luminance
             }
 
             ShaderManager.HasFinishedLoading = true;
+
+            while (ShaderManager.PostShaderLoadActions.TryDequeue(out Action action))
+                action?.Invoke();
         }
 
         public override object Call(params object[] args) => ModCallManager.ProcessAllModCalls(this, args);
