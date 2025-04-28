@@ -67,7 +67,15 @@ namespace Luminance.Core.Graphics
         /// </summary>
         private void HandleTargetUpdateLoop(GameTime obj)
         {
+            // Tomat: Make sure previous RenderTargets are preserved.  If this
+            // isn't done, issues may occur where the game transitions from one
+            // rendering context to another (e.g. leaving a world & saving).  It
+            // produces a wonderful black screen (or rapidly switches between
+            // the last drawn-to frame and the one before that if a mod forces
+            // PreserveContents).
+            var oldTargets = Main.instance.GraphicsDevice.GetRenderTargets();
             RenderTargetUpdateLoopEvent?.Invoke();
+            Main.instance.GraphicsDevice.SetRenderTargets(oldTargets);
 
             // Increment the render target lifetime timers. Once this reaches a certain threshold, the render target is automatically disposed.
             // This timer is reset back to 0 if it's accessed anywhere. The intent of this is to ensure that render targets that are not relevant at a given point in time
