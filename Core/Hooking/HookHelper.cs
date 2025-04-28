@@ -44,6 +44,7 @@ namespace Luminance.Core.Hooking
         /// <summary>
         /// Modifies the provided methodbase with the provided detour, and caches it. This is automatically undone on unloading.
         /// </summary>
+        [Obsolete("The MonoModHooks API accomplishes the same overall functionality as this and is generally superior.")]
         public static void ModifyMethodWithDetour(MethodBase methodToModify, Delegate detourMethod)
         {
             detours ??= [];
@@ -55,6 +56,7 @@ namespace Luminance.Core.Hooking
         /// <summary>
         /// Modifies the provided methodbase with the provided IL manipulator, and caches it. This is automatically undone on unloading.
         /// </summary>
+        [Obsolete("The MonoModHooks API accomplishes the same overall functionality as this and is generally superior.")]
         public static void ModifyMethodWithIL(MethodBase methodToModify, ILContext.Manipulator ilMethod)
         {
             ilHooks ??= [];
