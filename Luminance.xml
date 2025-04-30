@@ -2386,6 +2386,13 @@
             </remarks>
             <param name="mod">The mod to check for.</param>
         </member>
+        <member name="M:Luminance.Core.Graphics.ShaderRecompilationMonitor.RegisterShaderPathOverride(Terraria.ModLoader.Mod,System.String)">
+            <summary>
+            Registers an overriding path in which shaders should be searched for in a mod other than the default Assets folder.
+            </summary>
+            <param name="mod">The mod to register the path for.</param>
+            <param name="relativePath">The relative path to override with.</param>
+        </member>
         <member name="M:Luminance.Core.Graphics.ShaderRecompilationMonitor.ClearCompilationDirectory">
             <summary>
             Clears all .fx, .xnb, and .fxc files in the compiler directory.

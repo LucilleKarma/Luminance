@@ -16,6 +16,12 @@ namespace Luminance.Core.Graphics
     /// </summary>
     public sealed class ShaderRecompilationMonitor : ModSystem
     {
+        internal static Dictionary<string, string> WatchPathOverrides
+        {
+            get;
+            private set;
+        } = [];
+
         internal static Queue<CompilingFile> CompilingFiles
         {
             get;
@@ -131,7 +137,11 @@ namespace Luminance.Core.Graphics
                 return;
 
             // Verify that the Assets/AutoloadedEffects directory exists.
-            string effectsPath = $"{modSourcesPath}\\Assets\\{ShaderManager.AutoloadDirectoryShaders.Replace("/", "\\")}";
+            string effectsSubdirectory = "Assets";
+            if (WatchPathOverrides.TryGetValue(mod.Name, out string effectsSubdirectoryOverride))
+                effectsSubdirectory = effectsSubdirectoryOverride;
+
+            string effectsPath = $"{modSourcesPath}\\{effectsSubdirectory}\\{ShaderManager.AutoloadDirectoryShaders.Replace("/", "\\")}";
             if (!Directory.Exists(effectsPath))
                 return;
 
@@ -139,6 +149,13 @@ namespace Luminance.Core.Graphics
             TryToWatchPath(mod, effectsPath);
             TryToWatchPath(mod, filtersPath);
         }
+
+        /// <summary>
+        /// Registers an overriding path in which shaders should be searched for in a mod other than the default Assets folder.
+        /// </summary>
+        /// <param name="mod">The mod to register the path for.</param>
+        /// <param name="relativePath">The relative path to override with.</param>
+        public static void RegisterShaderPathOverride(Mod mod, string relativePath) => WatchPathOverrides[mod.Name] = relativePath.Replace("/", "\\");
 
         /// <summary>
         /// Clears all .fx, .xnb, and .fxc files in the compiler directory.
