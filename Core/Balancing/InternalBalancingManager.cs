@@ -30,8 +30,7 @@ namespace Luminance.Core.Balancing
             List<NPCHitBalancingChange> totalNPCHitBalancingChanges = [];
             List<NPCHPBalancingChange> totalNPCHPBalancingChanges = [];
 
-            SetFactory factory = new(ContentSamples.NpcsByNetId.Count);
-            npcHitRulesTable = factory.CreateCustomSet<List<INPCHitBalancingRule>>(null);
+            npcHitRulesTable = new List<INPCHitBalancingRule>[ContentSamples.NpcsByNetId.Count];
 
             if (balancingManagers == null)
                 return;
@@ -45,7 +44,7 @@ namespace Luminance.Core.Balancing
 
             itemBalancingChanges = totalItemBalancingChanges;
             npcHitBalancingChanges = totalNPCHitBalancingChanges;
-            npcHPBalancingChanges= totalNPCHPBalancingChanges;
+            npcHPBalancingChanges = totalNPCHPBalancingChanges;
         }
 
         public override void Unload()
