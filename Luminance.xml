@@ -2844,17 +2844,6 @@
             Call this from YourMod.Call(params object[] args).
             </summary>
         </member>
-        <member name="T:Luminance.Core.Rarities.SpeciallyRenderedRarity">
-            <summary>
-                A <see cref="T:Terraria.ModLoader.ModRarity"/> which applies special rendering (most often
-                shaders) to the relevant text.
-            </summary>
-        </member>
-        <member name="M:Luminance.Core.Rarities.SpeciallyRenderedRarity.RenderRarityText(Microsoft.Xna.Framework.Graphics.SpriteBatch,ReLogic.Graphics.DynamicSpriteFont,System.String,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Color,System.Single,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Vector2,Microsoft.Xna.Framework.Graphics.SpriteEffects,System.Single,System.Single,System.Boolean)">
-            <summary>
-                Renders the rarity text.
-            </summary>
-        </member>
         <member name="P:Luminance.Core.Sounds.LoopedSoundInstance.AutomaticTerminationCondition">
             <summary>
                 An automatic termination condition that governs whether the looping sound should terminate or not. Meant to serve as a fail-safe to ensure that looped sounds do not go on long after they should have stopped.
