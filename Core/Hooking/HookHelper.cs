@@ -95,6 +95,7 @@ namespace Luminance.Core.Hooking
         /// </summary>
         /// <param name="il"></param>
         /// <param name="_"></param>
+        [Obsolete("This uses a ManagedILEdit which is being removed in a future version, this also does not handle methods with non-void return types")]
         public static void EarlyReturnEdit(ILContext il, ManagedILEdit _)
         {
             ILCursor cursor = new(il);
