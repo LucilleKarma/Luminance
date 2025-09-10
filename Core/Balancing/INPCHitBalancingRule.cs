@@ -1,10 +1,13 @@
-﻿using Terraria;
+﻿using System;
+
+using Terraria;
 
 namespace Luminance.Core.Balancing
 {
     /// <summary>
     /// Use to create new balancing rules by attaching to classes/records.
     /// </summary>
+    [Obsolete("Balancing API will be removed in a future version")]
     public interface INPCHitBalancingRule
     {
         /// <summary>

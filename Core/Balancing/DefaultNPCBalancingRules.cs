@@ -8,6 +8,7 @@ namespace Luminance.Core.Balancing
     /// <summary>
     /// This class contains several default balancing rules that you can use. You can also make your own by creating a class/record that implements <see cref="INPCHitBalancingRule"/>.
     /// </summary>
+    [Obsolete("Balancing API will be removed in a future version")]
     public static class DefaultNPCBalancingRules
     {
         /// <summary>

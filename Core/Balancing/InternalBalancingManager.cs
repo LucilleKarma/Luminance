@@ -8,6 +8,7 @@ using Terraria.ModLoader;
 
 namespace Luminance.Core.Balancing
 {
+    [Obsolete("Balancing API will be removed in a future version")]
     public class InternalBalancingManager : ModSystem, ICustomDetourProvider
     {
         private static List<BalancingManager> balancingManagers;

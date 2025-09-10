@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Terraria.ModLoader;
 
 namespace Luminance.Core.Balancing
@@ -6,6 +7,7 @@ namespace Luminance.Core.Balancing
     /// <summary>
     /// A class to supply balancing changes on mod loading.
     /// </summary>
+    [Obsolete("Balancing API will be removed in a future version")]
     public abstract class BalancingManager : ModType
     {
         /// <summary>

@@ -1,8 +1,11 @@
-﻿namespace Luminance.Core.Balancing
+﻿using System;
+
+namespace Luminance.Core.Balancing
 {
     /// <summary>
     /// Defines what priority a balance change should have in case of conflicts. Only the change with the highest priority will occur.
     /// </summary>
+    [Obsolete("Balancing API will be removed in a future version")]
     public enum BalancePriority
     {
         /// <summary>
