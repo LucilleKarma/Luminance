@@ -6,6 +6,7 @@ using Terraria.ModLoader;
 
 namespace Luminance.Core.Hooking
 {
+    [Obsolete("Hook wrapper APIs provide no direct benefits over HookGen hooks or Hook/ILHook usage and will be removed in a future version")]
     public delegate void ManagedILManipulator(ILContext context, ManagedILEdit edit);
 
     /// <summary>
@@ -16,6 +17,7 @@ namespace Luminance.Core.Hooking
     /// <param name="SubscriptionFunction">An action that subscribes the ILEdit.</param>
     /// <param name="UnsubscriptionFunction">An action that unsubscribes the ILEdit.</param>
     /// <param name="EditingFunction">The delegate that contains/represents the ILEdit.</param>
+    [Obsolete("Hook wrapper APIs provide no direct benefits over HookGen hooks or Hook/ILHook usage and will be removed in a future version, use MonoMod.RuntimeDetour.ILHook or IL.* APIs")]
     public sealed record ManagedILEdit(string Name, Mod AssociatedMod, Action<ManagedILEdit> SubscriptionFunction, Action<ManagedILEdit> UnsubscriptionFunction, ManagedILManipulator EditingFunction)
     {
         private static readonly Dictionary<string, List<ManagedILEdit>> EditsByMod = [];

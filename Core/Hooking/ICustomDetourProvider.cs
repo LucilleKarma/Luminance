@@ -1,8 +1,11 @@
-﻿namespace Luminance.Core.Hooking
+﻿using System;
+
+namespace Luminance.Core.Hooking
 {
     /// <summary>
     /// Provides a class with automanaged implementation of creating and subscribing to a new detour(s).
     /// </summary>
+    [Obsolete("Hook wrapper APIs provide no direct benefits over HookGen hooks or Hook/ILHook usage and will be removed in a future version, use MonoMod.RuntimeDetour.Hook")]
     public interface ICustomDetourProvider
     {
         /// <summary>

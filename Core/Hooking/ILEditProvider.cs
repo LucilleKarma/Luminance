@@ -1,4 +1,6 @@
-﻿using MonoMod.Cil;
+﻿using System;
+
+using MonoMod.Cil;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -7,6 +9,7 @@ namespace Luminance.Core.Hooking
     /// <summary>
     /// A basic provider class for wrapping around a single <see cref="ManagedILEdit"/>. If you need to do multiple in one class, use a <see cref="ModSystem"/> or similar.
     /// </summary>
+    [Obsolete("Hook wrapper APIs provide no direct benefits over HookGen hooks or Hook/ILHook usage and will be removed in a future version, use MonoMod.RuntimeDetour.ILHook or IL.* APIs")]
     public abstract class ILEditProvider : ModType
     {
         public sealed override void Load()

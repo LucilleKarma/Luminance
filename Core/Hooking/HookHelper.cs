@@ -13,6 +13,7 @@ namespace Luminance.Core.Hooking
     /// <summary>
     /// Provides useful methods for working with IL editing and custom detouring.
     /// </summary>
+    [Obsolete("Hook wrapper APIs provide no direct benefits over HookGen hooks or Hook/ILHook usage and will be removed in a future version")]
     public static class HookHelper
     {
         private static List<Hook> detours = [];
