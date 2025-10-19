@@ -1,5 +1,5 @@
 > [!WARNING]
-> The balancing and MonoMod hooking APIs have been deprecated and will be removed once 1.4.5 releases.
+> The balancing and hooking APIs have been deprecated and will be removed once 1.4.5 releases.
 
 # Luminance
 
@@ -18,7 +18,7 @@ To make your mod use Luminance, add `modReferences = Luminance` in your mod's `b
 ## API breakage policy
 
 To prevent mod breakage from updates to Luminance as much as possible, changes to exsting methods etc will attempt to obsolete the old versions while also adding the new versions for a wait period of 2 weeks at minimum, to allow mods to update safely to the newer version without suddenly breaking. After the wait time has passed, the old versions will be removed.
-You can keep track of any current or upcoming breakage by checking [here](https://github.com/DominicKarma/Luminance/blob/main/CHANGELOGS.md) each time Luminance updates.
+You can keep track of any current or upcoming breakage by checking [here](https://github.com/LucilleKarma/Luminance/blob/main/CHANGELOGS.md) each time Luminance updates.
 
 ## Feature list
 
