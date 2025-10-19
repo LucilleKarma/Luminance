@@ -46,7 +46,6 @@ Thanks to anyone and everyone who has contributed to Luminance in any form!
 
 - **Lucille Karma:** Initial mod features, feature contributor.
 - **tomat:** Feature contributor and maintainer.
-- **Imogen:** Feature contributor.
 - **moonburn:** Proper mod icon.
 - **JavyzTaken:** Various optimizations and minor additions.
 - **madamamada, riz30n014, definatly_a_human, ritsukicat, myawk, lgl_fish, Chik3r, tomat, LoLXD8783, Blockaroz:** Translations.
