@@ -1,5 +1,5 @@
 displayName = Luminance
-author = Lucille Karma, Imogen
+author = Lucille Karma
 version = 1.0.12
 homepage = https://github.com/LucilleKarma/Luminance
 buildIgnore = .vs\*, Properties\*, *.csproj, *.user, obj\*, bin\*, *.config, .git\*, .github\*, LICENSE, README.md, .editorconfig, .gitignore, .gitattributes, TODO.md
