@@ -1,15 +1,20 @@
-
 <Project Sdk="Microsoft.NET.Sdk">
-  <Import Project="..\tModLoader.targets" />
+
+  <Import Project="..\tModLoader.targets"/>
+
   <PropertyGroup>
-    <AssemblyName>Luminance</AssemblyName>
-    <LangVersion>latest</LangVersion>
     <ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>None</ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>
   </PropertyGroup>
+
   <PropertyGroup>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <DocumentationFile>.\Luminance.xml</DocumentationFile>
   </PropertyGroup>
+
   <ItemGroup>
+    <!-- Helpful to automaticlly important any libraryes placed in `lib/`
+         (still necessary to explicitly add them to `dllReferences`!). -->
+    <Reference Include="$(MSBuildProjectFileDirectory)lib\**\*.dll"/>
   </ItemGroup>
+
 </Project>

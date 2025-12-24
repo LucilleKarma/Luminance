@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Terraria.ModLoader;
 
 namespace Luminance.Core.MenuInfoUI
@@ -6,6 +7,7 @@ namespace Luminance.Core.MenuInfoUI
     /// <summary>
     /// A class to supply all information icons for your mod on loading.
     /// </summary>
+    [Obsolete("Use the DAYBREAK Info Icon API")]
     public abstract class InfoUIManager : ModType
     {
         /// <summary>

@@ -1,6 +1,15 @@
 # Menu Info UI
+
+> [!WARNING]
+> As of Luminance 1.0.14/DAYBREAK 2.4.0, this API has been deprecated.
+> 
+> Use the DAYBREAK version instead. TODO
+
+---
+
 Luminance provides an easy way to have custom icons appear on the player and world selection UI, providing information about them. To use, create a class inheriting from ``InfoUIManager`` and override ``GetPlayerInfoIcons()`` and/or ``GetWorldInfoIcons()``.
-```csharp
+
+```cs
 public sealed class ExampleInfoUIManager : InfoUIManager
 {
     public override IEnumerable<PlayerInfoIcon> GetPlayerInfoIcons()
@@ -32,6 +41,7 @@ public sealed class ExampleInfoUIManager : InfoUIManager
     }
 }
 ```
+
 > A basic example showcasing how to add icons.
 
 The priority of the icons (the last parameter in the constructor) is responsible for ordering (ascending order). If the order of your icon does not matter, place it around the 100 mark, else try different values until it works well with other mod's icons.

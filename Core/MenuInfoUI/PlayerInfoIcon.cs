@@ -10,5 +10,6 @@ namespace Luminance.Core.MenuInfoUI
     /// <param name="HoverTextKey">The localization key for the text that should be displayed when this icon is hovered.</param>
     /// <param name="ShouldAppear">Whether this icon should appear for the provided player.</param>
     /// <param name="Priority">The priority of this icon, this determines the ordering of the icon from low to high.</param>
+    [Obsolete("Use the DAYBREAK Info Icon API")]
     public record PlayerInfoIcon(string TexturePath, string HoverTextKey, Func<Player, bool> ShouldAppear, byte Priority) : IInfoIcon;
 }
