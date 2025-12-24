@@ -13,7 +13,6 @@ using Terraria.ModLoader;
 using Terraria.UI.Chat;
 using Terraria.GameContent.UI.States;
 using System.Linq;
-using Daybreak.Common.Features.InfoIcons;
 using Terraria.UI;
 using Terraria.Localization;
 
@@ -21,38 +20,6 @@ namespace Luminance.Core.MenuInfoUI
 {
     internal class InternalInfoUIManager : ModSystem, IExistingDetourProvider
     {
-        [Autoload(false)]
-        [VersionAwareModJit("Daybreak@2.4.0")]
-        private sealed class LuminanceDaybreakPlayerIcon(PlayerInfoIcon icon) : PlayerIcon
-        {
-            public override string Texture => icon.TexturePath;
-
-            public override LocalizedText Description => Language.GetText(icon.HoverTextKey);
-
-            public override float Priority => icon.Priority / 255f;
-
-            public override bool IsVisible(PlayerFileData playerFile)
-            {
-                return icon.ShouldAppear(playerFile.Player);
-            }
-        }
-        
-        [Autoload(false)]
-        [VersionAwareModJit("Daybreak@2.4.0")]
-        private sealed class LuminanceDaybreakWorldIcon(WorldInfoIcon icon) : WorldIcon
-        {
-            public override string Texture => icon.TexturePath;
-
-            public override LocalizedText Description => Language.GetText(icon.HoverTextKey);
-
-            public override float Priority => icon.Priority / 255f;
-            
-            public override bool IsVisible(WorldFileData worldFile)
-            {
-                return icon.ShouldAppear(worldFile);
-            }
-        }
-        
         #region Fields
         private static List<InfoUIManager> infoManagers;
 
@@ -82,25 +49,6 @@ namespace Luminance.Core.MenuInfoUI
         {
             infoManagers ??= [];
             infoManagers.Add(manager);
-
-            if (ModLoader.TryGetMod("Daybreak", out var daybreak) && daybreak.Version >= new Version(2, 4, 0))
-            {
-                RegisterDaybreakIcons(manager);
-            }
-        }
-
-        [VersionAwareModJit("Daybreak@2.4.0")]
-        private static void RegisterDaybreakIcons(InfoUIManager manager)
-        {
-            foreach (var playerIcon in manager.GetPlayerInfoIcons())
-            {
-                manager.Mod.AddContent(new LuminanceDaybreakPlayerIcon(playerIcon));
-            }
-            
-            foreach (var worldIcon in manager.GetWorldInfoIcons())
-            {
-                manager.Mod.AddContent(new LuminanceDaybreakWorldIcon(worldIcon));
-            }
         }
 
         public override void PostSetupContent()
