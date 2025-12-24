@@ -6,4 +6,3 @@ buildIgnore = .vs\*, Properties\*, *.csproj, *.user, obj\*, bin\*, *.config, .gi
 hideCode = false
 hideResources = false
 includeSource = true
-weakReferences = Daybreak
